@@ -7,21 +7,20 @@ function App() {
   const [text, setText] = useState('blue');
   const newText = text === 'red' ? 'blue' : 'red';
   const [checked, setChecked] = useState(false);
-  const disabled = checked === true ? false : true;
 
   const handleClick = (e) => {
     setColor(newColor);
     setText(newText);
   }
 
-  const handleChange = () => {
-    setChecked(disabled);
+  const handleChange = (e) => {
+    setChecked(e.target.checked);
   }
 
   return (
     <div className="App">
-      <button onClick={handleClick} style={{ color: 'white', backgroundColor: color}}>{`change to ${text}`}</button>
-      <input onChange={handleChange} checked={checked} type='checkbox' />
+      <button onClick={handleClick} style={{ color: 'white', backgroundColor: color}} disabled={checked}>{`change to ${text}`}</button>
+      <input onChange={handleChange} defaultChecked={checked} type='checkbox' />
     </div>
   );
 }
